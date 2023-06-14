@@ -7,13 +7,15 @@ const App = () => {
   const [items, setItems] = useState([]);
 
   const toggleDetails = () => {
-    setShowDetails(!showDetails);
-    setButtonClicks(buttonClicks + 1);
+    setShowDetails((prevShowDetails) => !prevShowDetails);
+    setButtonClicks((prevButtonClicks) => prevButtonClicks + 1);
   };
 
   const addItem = () => {
-    if (inputText.trim() !== '') {
-      setItems([...items, inputText]);
+    const trimmedInputText = inputText.trim();
+    if (trimmedInputText !== '') {
+      const newItems = [...items, trimmedInputText];
+      setItems(newItems);
       setInputText('');
     }
   };
@@ -25,15 +27,16 @@ const App = () => {
       style={{
         textAlign: 'center',
         fontFamily: 'Arial, sans-serif',
-        backgroundColor: '#f2f2f2',
-        padding: '30px',
+        backgroundColor: '#e6e6e6',
+        padding: '20px',
       }}
     >
       <h1
         style={{
-          fontSize: '28px',
-          marginBottom: '20px',
-          color: '#333',
+          fontSize: '32px',
+          marginBottom: '10px',
+          color: '#555',
+          fontWeight: 'bold',
         }}
       >
         {title}
